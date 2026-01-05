@@ -4,6 +4,7 @@ import { Input } from '../components/ui/input';
 import { Search, Filter, Clock, AlertTriangle, CheckCircle, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { API_URL } from '../config';
 
 export function DocumentList() {
     const [documents, setDocuments] = useState<any[]>([]);
@@ -15,7 +16,7 @@ export function DocumentList() {
     useEffect(() => {
         const fetchDocuments = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/documents');
+                const response = await fetch(`${API_URL}/api/documents`);
                 if (response.ok) {
                     const data = await response.json();
                     setDocuments(data);

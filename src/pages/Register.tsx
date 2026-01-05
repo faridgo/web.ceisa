@@ -4,6 +4,7 @@ import { Input } from '../components/ui/input';
 import { Link, useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '../components/ui/card';
 import { UserPlus } from 'lucide-react';
+import { API_URL } from '../config';
 
 export function Register() {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ export function Register() {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:3001/api/register', {
+            const response = await fetch(`${API_URL}/api/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)

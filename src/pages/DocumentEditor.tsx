@@ -6,6 +6,7 @@ import { Save, Send, AlertCircle, ChevronLeft, Cloud, WifiOff, RefreshCw } from 
 
 import { validateDocument, type ValidationError } from '../lib/validation';
 import { submitDirectExportJob, type DirectExportJobPayload } from '../lib/singlewindow-api';
+import { API_URL } from '../config';
 
 // Form Sections
 const SECTIONS = [
@@ -62,7 +63,7 @@ export function DocumentEditor() {
         };
 
         try {
-            const response = await fetch('http://localhost:3001/api/documents', {
+            const response = await fetch(`${API_URL}/api/documents`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

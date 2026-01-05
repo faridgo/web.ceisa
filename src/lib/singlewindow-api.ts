@@ -39,7 +39,9 @@ export interface InvoiceItem {
     itemQuantityUnit: string;
 }
 
-const PROXY_URL = "http://localhost:3001/api/proxy/single-window/submit";
+import { API_URL } from '../config';
+
+const PROXY_URL = `${API_URL}/api/proxy/single-window/submit`;
 
 export async function submitDirectExportJob(token: string, payload: DirectExportJobPayload) {
     console.log("Submitting via Proxy:", payload);
