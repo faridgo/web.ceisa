@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# FRD Spedition - Ceisa Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application for managing customs documents, integrating with the Single Window API, and featuring AI-powered OCR for automatic data extraction from invoices.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Document Management**: Create, edit, and track PEB (Pemberitahuan Ekspor Barang) documents.
+- **AI OCR Integration**: Automatically extract data from PDF/Image invoices using Tesseract.js.
+- **Single Window API Proxy**: Securely forward validated document data to the Single Window API.
+- **Autosave & Local Drafts**: Never lose your progress with localStorage backups and automatic database syncing.
+- **Smart Validation**: Real-time validation for customs-specific fields (HS Codes, NPWP, etc.).
 
-## React Compiler
+## 🛠 Technology Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- **React 19** with **TypeScript**
+- **Vite** for fast development and building
+- **Tailwind CSS** for modern, responsive styling
+- **Lucide React** for premium iconography
+- **React Router 7** for navigation
 
-## Expanding the ESLint configuration
+### Backend
+- **Node.js** with **Express**
+- **Better-SQLite3** for high-performance data storage
+- **JWT & Bcryptjs** for secure authentication
+- **Nodemailer** for automated communication
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js (v20.19+ or v22.12+)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/faridgo/web.ceisa.git
+   cd web.ceisa
+   ```
+
+2. **Install Frontend Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Install Backend Dependencies**:
+   ```bash
+   cd server
+   npm install
+   cd ..
+   ```
+
+### Running the Application
+
+You need to run both the frontend and the backend servers.
+
+1. **Start the Backend Server**:
+   ```bash
+   cd server
+   npm start
+   ```
+   The server will run on [http://localhost:3001](http://localhost:3001).
+
+2. **Start the Frontend Development Server**:
+   ```bash
+   # In a new terminal
+   npm run dev
+   ```
+   The application will be accessible at [http://localhost:5173](http://localhost:5173).
+
+## 📂 Project Structure
+
+```
+ceisa-app/
+├── server/             # Express Backend
+│   ├── db.js          # SQLite Database configuration
+│   ├── index.js       # Main API entry point
+│   └── email.js       # Email notification service
+├── src/                # React Frontend
+│   ├── components/    # Reusable UI components
+│   ├── layouts/       # Page layouts (Dashboard, Guest)
+│   ├── lib/           # Utility functions (OCR, API, Validation)
+│   └── pages/         # Application pages
+├── public/             # Static assets
+└── package.json        # Project dependencies and scripts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔐 Environment Variables
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Create a `.env` file in the root directory for any environment-specific configurations (e.g., API keys, secrets). Note that `.env` files are ignored by git for security.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📝 License
+
+This project is private and intended for use by FRD Spedition.
